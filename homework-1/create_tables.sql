@@ -1,24 +1,25 @@
 -- SQL-команды для создания таблиц
 
 -- Создание таблицы employees
-CREATE TABLE employees (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100),
-    department VARCHAR(100),
-    salary DECIMAL(10, 2)
-);
-
--- Создание таблицы customers
 CREATE TABLE customers (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100),
-    city VARCHAR(100)
+    customer_id VARCHAR(5) PRIMARY KEY,
+    company_name VARCHAR(100),
+    contact_name VARCHAR(100)
 );
 
--- Создание таблицы orders
+CREATE TABLE employees (
+    employee_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    title VARCHAR(100),
+    birth_date DATE,
+    notes TEXT
+);
+
 CREATE TABLE orders (
-    id SERIAL PRIMARY KEY,
-    customer_id INT,
-    total_amount DECIMAL(10, 2),
-    FOREIGN KEY (customer_id) REFERENCES customers(id)
+    order_id SERIAL PRIMARY KEY,
+    customer_id VARCHAR(10),
+    employee_id INTEGER,
+    order_date DATE,
+    ship_city VARCHAR(100)
 );
